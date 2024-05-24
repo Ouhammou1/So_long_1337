@@ -21,17 +21,12 @@
 #include "libft/libft.h"
 
 
-// struct player
-// {
-//     int x;
-//     int y;
-//     // void *player;
-// };
 
 typedef struct m_l_x
 {
     int count_len;
     char **av;
+    char **map;
     int x_width;
     int y_height;
     void *img;
@@ -47,12 +42,7 @@ typedef struct m_l_x
 } t_game ;
 
 
-
-
-
-
-
-
+void    join_string(t_game  *vers , char *s);
 
 void    check_length(t_game *vers );
 void    chack_wall(t_game *vers );
@@ -75,15 +65,32 @@ void    map_exit(t_game *vers );
 
 
 
-void    check_move_ply_to_collcet( t_game vers  );
 
 void    flood_fill(int x  , int y , char     **list);
 void    check_collect_exit(char **list,int  count);
-// int handle_key(int key, t_game *vers );
 
 void     moves_player(t_game *vers );
 
+
+// move player 
+void    check_move_ply_to_collcet( t_game vers  );
 int handle_key(int keycode, void *param);
+
+void	delet_image_with_indices(t_game *vers ) ;
+void	put_image_with_indices(t_game *vers ) ;
+void	put_image_exit(t_game *vers ) ;
+
+void     direct_down(t_game *vers , int *nbr );
+void	 down(t_game  *vers, int *nbr  );
+
+void    direct_up(t_game *vers, int *nbr);
+void 	up(t_game *vers, int *nbr );
+
+void direct_left(t_game *vers , int *nbr  );
+void	left(t_game *vers, int *nbr );
+
+void direct_right(t_game *vers ,int *nbr);
+void right(t_game *vers , int *nbr );
 
 
 #endif

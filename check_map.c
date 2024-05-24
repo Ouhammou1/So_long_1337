@@ -28,9 +28,9 @@ void    check_caracteres(t_game *vers )
     while ( i <  vers->count_len)
     {
         j=0;
-        while (vers->av[i][j])
+        while (vers->map[i][j])
         {
-            if (vers->av[i][j] != '1' && vers->av[i][j] != '0' && vers->av[i][j] != 'P' && vers->av[i][j] != 'E' && vers->av[i][j] != 'C')
+            if (vers->map[i][j] != '1' && vers->map[i][j] != '0' && vers->map[i][j] != 'P' && vers->map[i][j] != 'E' && vers->map[i][j] != 'C')
             {
                 printf("Error -->>  duplicates characters\n");
                 exit(0);
@@ -53,11 +53,11 @@ void    check_duplcat_char(t_game *vers )
     while ( i < vers->count_len)
     {
         j =0;
-        while (vers->av[i][j])
+        while (vers->map[i][j])
         {
-            if(vers->av[i][j] == 'P')
+            if(vers->map[i][j] == 'P')
                 p++;
-            if(vers->av[i][j] == 'E')
+            if(vers->map[i][j] == 'E')
                 e++;
         j++;
         }
@@ -65,7 +65,7 @@ void    check_duplcat_char(t_game *vers )
     }
     if(p != 1 || e != 1)
     {
-        printf("Error deplcat E or P\n");
+        printf("Error deplicat E or P\n");
         exit(0);
     }
 }
@@ -74,12 +74,12 @@ void    chack_wall(t_game *vers )
 {
     int i;
     int j;
-    vers->len_colon = ft_strlen(vers->av[0]) -1;
+    vers->len_colon = ft_strlen(vers->map[0]) -1;
     i =0;
     j=0;
-    while (vers->av[i][j])
+    while (vers->map[i][j])
     {
-        if (vers->av[i][j] != '1' || vers->av[vers->count_len -1][j] != '1')
+        if (vers->map[i][j] != '1' || vers->map[vers->count_len - 1][j] != '1')
         {
             printf("Error ->> Wall ->> Line\n");
             exit(0);
@@ -90,7 +90,7 @@ void    chack_wall(t_game *vers )
     j=0;
     while (i < vers->count_len)
     {
-        if (vers->av[i][j] != '1' || vers->av[i][vers->len_colon] != '1')
+        if (vers->map[i][j] != '1' || vers->map[i][vers->len_colon] != '1')
         {
             printf("Error ->> Wall ->> Colone  \n");
             exit(0);
@@ -104,16 +104,16 @@ void check_length(t_game *vers )
 {
     int i;
 
-    vers->len_colon = ft_strlen(vers->av[0]);
+    vers->len_colon = ft_strlen(vers->map[0]);
     i = 0;
     while (i < vers->count_len)
     {
-        if(vers->len_colon != ft_strlen(vers->av[i]) )
+        if(vers->len_colon != ft_strlen(vers->map[i]) )
         {
             printf("Error ->> length\n");
             exit(0);
         }
-        vers->len_colon = ft_strlen(vers->av[i]);
+        vers->len_colon = ft_strlen(vers->map[i]);
         i++;
     }
 

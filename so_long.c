@@ -25,24 +25,20 @@ void    check_errors_map(t_game *vers )
 
 void    libriry_m_l_x(t_game *vers )
 {
-    int i = 0;
-
-    // back_img( vers );
-
+    int i;
+    int j;
     vers->len_img_x = 0;
     vers->len_img_y = 0;
 
-    // printf("vers .count_len ====   %d\n",vers->count_len);
-
+    i = 0;
     while (i < vers->count_len)
     {
-        int j =0;
+        j =0;
         while (vers->av[i][j])
         {
             if( vers->av[i][j] == '1')
-            {
-                 mlx_put_image_to_window(vers->mlx, vers->win, vers->img, vers->len_img_x , vers->len_img_y);
-            }
+                mlx_put_image_to_window(vers->mlx, vers->win, vers->img, vers->len_img_x , vers->len_img_y);
+
             vers->len_img_x+=vers->a;
             j++;
         }
@@ -50,41 +46,24 @@ void    libriry_m_l_x(t_game *vers )
         vers->len_img_x = 0;
         i++;
     }
-    // back_img( vers );
-
     collect_point(vers );
     player_start(vers );
     map_exit( vers );
-
     check_move_ply_to_collcet( *vers );
-
-
-    // moves_player( vers );
-
-    // printf(" x = %d \n y = %d \n", new.a, new.b);
-
-    // mlx_key_hook(vers .win , handle_key , NULL);
-
 }
 
-
-int main(int ac, char **av)
+void    join_string(t_game  *vers , char *s)
 {
-    (void)ac;
     char *str;
-    int fd;
+    int  fd;
     char *ptr;
 
-    check_fil_name(av[1]);
+    check_fil_name(s);
 
-    t_game *vers = NULL ;
-    vers = (t_game *)malloc(sizeof(t_game));
-    if (!vers)
-        return 1;
-
-    fd = open(av[1], O_RDONLY);
+    fd = open(s, O_RDONLY);
     str = get_next_line(fd);
     vers->count_len =0;
+
     while (str != NULL)
     {
         ptr = ft_strjoin(ptr,str);
@@ -93,30 +72,33 @@ int main(int ac, char **av)
     }
 
     vers->av = ft_split(ptr,'\n');
+    vers->map = ft_split(ptr,'\n');
+}
 
+int main(int ac, char **av)
+{
+    if(ac != 2)
+        exit(0);
+
+    t_game *vers = NULL ;
+    vers = (t_game *)malloc(sizeof(t_game));
+    if (!vers)
+        return 0;
+
+    join_string(vers,av[1]);
     check_errors_map(vers );
-
-
-
     vers->len_colon = ft_strlen(vers->av[1]);
-
-    
     vers->mlx = mlx_init();
-    vers->img = mlx_xpm_file_to_image(vers->mlx, "./image/uu/wall.xpm", &vers->a , &vers->b);
+    vers->img = mlx_xpm_file_to_image(vers->mlx, "./image/test/wall.xpm", &vers->a , &vers->b);
 
-    vers->x_width = vers->a * vers->len_colon;
-    vers->y_height = vers->b * vers->count_len;
-
-
-    vers->win = mlx_new_window(vers->mlx, vers->x_width ,vers->y_height ,"SO_LOOOOONG");   
-
+    vers->x_width = vers->a * vers->len_colon ;
+    vers->y_height = vers->b * vers->count_len ;
+    vers->win = mlx_new_window(vers->mlx, vers->x_width ,vers->y_height ,"SO_LOOONG THE GAME ONE :))");   
     libriry_m_l_x( vers );
-
+    back_img(vers);
     mlx_key_hook(vers->win, handle_key, vers);
-
     mlx_loop(vers->mlx);
-
+    mlx_destroy_window(vers->mlx , vers->win);
     free(vers);
-
 return 0;
 }

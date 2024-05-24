@@ -13,7 +13,7 @@ int len_collect(t_game  *vers )
         j=0;
         while (vers->av[i][j])
         {
-            if(vers->av[i][j] == 'c')
+            if(vers->av[i][j] == 'C')
                 nbr++;
             j++;
         }

@@ -53,6 +53,6 @@ void    check_move_ply_to_collcet( t_game  vers )
     new = vers;
     new = position_player(vers);
 
-    flood_fill(new.pos_ply_x  , new.pos_ply_y , new.av);
-    check_collect_exit(new.av , new.count_len);     
+    flood_fill(new.pos_ply_x  , new.pos_ply_y , new.map);
+    check_collect_exit(new.map , new.count_len);     
 }
