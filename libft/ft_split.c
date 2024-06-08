@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	word_count(char  *s, char c)
+static int	word_count(char *s, char c)
 {
 	int	count;
 	int	i;
@@ -41,7 +41,7 @@ static char	**ft_fre(char **list, int j)
 	return (NULL);
 }
 
-static int	length( char *str, char c)
+static int	length(char *str, char c)
 {
 	int	i;
 
@@ -53,11 +53,11 @@ static int	length( char *str, char c)
 	return (i);
 }
 
-char	**ft_split(char  *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**list;
-	int	j;
-	int	word;
+	int		j;
+	int		word;
 
 	if (!s)
 		return (0);

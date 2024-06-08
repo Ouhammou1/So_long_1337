@@ -64,7 +64,7 @@ char	*ft_join(char *str, char *s1, char *s2)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	len;
+	int		len;
 	char	*str;
 
 	if (!s2)
@@ -92,9 +92,9 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_last_line(char *str)
 {
-	int	j;
-	int	k;
-	int	len;
+	int		j;
+	int		k;
+	int		len;
 	char	*ptr;
 
 	j = 0;

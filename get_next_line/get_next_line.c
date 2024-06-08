@@ -41,7 +41,7 @@ char	*ft_return_line(char *ptr)
 
 char	*ft_read_string(int fd, char *string)
 {
-	int	nbr;
+	int		nbr;
 	char	*buff;
 
 	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
